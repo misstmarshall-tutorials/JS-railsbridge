@@ -92,14 +92,13 @@ $('#list').on('click', '.complete-button', function(event) {
 })
 
 ///////////////////////////////////////////////////////
-/*
+
 //add event listener to listen to a button click on the delete-button
 $('#list').on('click', '.delete-button', function(event) {
     //alert('trying to delete an item!')
 
     //get necessary info needed from the page to make changes
 	var item = $(event.target).parent()
-	var isItemCompleted = item.hasClass('completed')
 	var itemId = item.attr('data-id')
 	//alert('clicked item ' + itemId + ', which has completed currently set to ' + isItemCompleted)
 	
@@ -112,8 +111,6 @@ $('#list').on('click', '.delete-button', function(event) {
 
 	//update the html to delete the item
 	updateRequest.done(function(itemData) {
-	    
+	    item.remove();
 	}) 
 })
-
-*/
