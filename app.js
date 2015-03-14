@@ -124,3 +124,19 @@ $('#list').on('click', '.delete-button', function(event) {
 })
 
 ///////////////////////////////////////////////////////////
+
+$('#list').on('blur', '.description', function(event) {
+    var newText = $(this).text();
+
+    //get necessary info needed from the page to make changes
+	var item = $(event.target).parent()
+	var itemId = item.attr('data-id')
+
+	//make request to the server to update the data stored
+	var updateRequest = $.ajax({
+    type: 'PUT',
+    url: "https://listalous.herokuapp.com/lists/misstmarshall/items/" + itemId,
+    data: { description: newText }
+	})
+
+})
