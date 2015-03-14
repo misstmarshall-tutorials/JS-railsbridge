@@ -59,6 +59,7 @@ $('#add-form').on('submit', function(event) {
 	//call function created at the top of the page that adds an item to the list in the HTML DOM tree using the data sent back from the server
 	creationRequest.done(function(itemDataFromServer) {
 	  addItemToPage(itemDataFromServer)
+	  $('#create').val('')
 	})
 })
 
@@ -114,3 +115,5 @@ $('#list').on('click', '.delete-button', function(event) {
 	    item.remove();
 	}) 
 })
+
+///////////////////////////////////////////////////////////
