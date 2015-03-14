@@ -44,23 +44,30 @@ loadRequest.done(function(dataFromServer) {
 
 //start listening for when the user submits the form at the top of the page after pressing enter
 $('#add-form').on('submit', function(event) {
-  //prevent page from refreshing
-  event.preventDefault()
-  var itemDescription = event.target.itemDescription.value
-  //alert('trying to create a new item with a description ' + itemDescription)
-	
-	//creates an AJAX request to the server to create an item with the description provided
-	var creationRequest = $.ajax({
-	  type: 'POST',
-	  url: "http://listalous.herokuapp.com/lists/misstmarshall/items",
-	  data: { description: itemDescription, completed: false }
-	})
+  if($('#create').val() === "")
+  {
+  	//alert('Textfield is empty')
+  }
+  else
+  {
+	  //prevent page from refreshing
+	  event.preventDefault()
+	  var itemDescription = event.target.itemDescription.value
+	  //alert('trying to create a new item with a description ' + itemDescription)
+		
+		//creates an AJAX request to the server to create an item with the description provided
+		var creationRequest = $.ajax({
+		  type: 'POST',
+		  url: "http://listalous.herokuapp.com/lists/misstmarshall/items",
+		  data: { description: itemDescription, completed: false }
+		})
 
-	//call function created at the top of the page that adds an item to the list in the HTML DOM tree using the data sent back from the server
-	creationRequest.done(function(itemDataFromServer) {
-	  addItemToPage(itemDataFromServer)
-	  $('#create').val('')
-	})
+		//call function created at the top of the page that adds an item to the list in the HTML DOM tree using the data sent back from the server
+		creationRequest.done(function(itemDataFromServer) {
+		  addItemToPage(itemDataFromServer)
+		  $('#create').val('')
+		})
+	}
 })
 
 ////////////////////////////////////////////////////
